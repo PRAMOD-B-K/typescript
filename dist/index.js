@@ -46,13 +46,15 @@ function palindromString(s) {
 }
 exports.palindromString = palindromString;
 // console.log("zzzzzzzzzzzz",palindromString("A man a plan a canal Panama"));
-function rotateArray(arr, r) {
+function rotateArray(arr, r, direction) {
     let rArr = [];
     for (let i = 0; i < arr.length; i++) {
-        rArr[(r + i) % arr.length] = arr[i];
+        let c = direction == "right" ? (r + i) % arr.length : (i - r + arr.length) % arr.length;
+        rArr[c] = arr[i];
     }
     return rArr;
 }
 exports.rotateArray = rotateArray;
 ;
-console.log(rotateArray([1, 2, 3, 4, 5], 2));
+console.log(rotateArray([1, 2, 3, 4, 5], 2, "right"));
+console.log(rotateArray([1, 2, 3, 4, 5], 2, "left"));

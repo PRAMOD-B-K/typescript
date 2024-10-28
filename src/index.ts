@@ -51,16 +51,20 @@ export function palindromString(s :string) : boolean{
 
 // console.log("zzzzzzzzzzzz",palindromString("A man a plan a canal Panama"));
 
-export function rotateArray(arr: number[], r :number): number[]  {
+export function rotateArray(arr: number[], r :number, direction:string): number[]  {
     let rArr :number[] = [];
 
+    
+
     for (let i = 0 ; i < arr.length ; i++){
-        rArr[(r + i) % arr.length] = arr[i];
+      let c : number = direction == "right" ? (r + i) % arr.length : ( i - r + arr.length) % arr.length;
+        rArr[c] = arr[i];
     }
 
     return rArr;
 };
 
-console.log(rotateArray([1,2,3,4,5],2));
+console.log(rotateArray([1,2,3,4,5],2,"right"));
+console.log(rotateArray([1,2,3,4,5],2,"left"));
 
 
